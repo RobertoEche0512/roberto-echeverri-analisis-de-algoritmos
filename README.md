@@ -13,10 +13,12 @@ Repositorio oficial del curso **Análisis de Algoritmos** para la entrega de los
 ```bash
 git clone https://github.com/roberto-echeverri/roberto-echeverri-analisis-de-algoritmos.git
 cd roberto-echeverri-analisis-de-algoritmos
-```
+
 
 ## Autor
 
 - Nombre: Roberto Echeverri Arroyave
 - Correo: robertoecheverri7686@correo.itm.edu.co
 - Semestre: 2026-2
+
+Actualización: README verificado el 23/08/2026.
