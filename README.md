@@ -27,3 +27,5 @@ Actualización: README verificado el 23/08/2026.
 Cualquier cambio sirve.
 
 Actualización: README revisado.
+
+Actualización: sección de autor verificada.
