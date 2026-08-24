@@ -29,3 +29,5 @@ Cualquier cambio sirve.
 Actualización: README revisado.
 
 Actualización: sección de autor verificada.
+
+Corrección final del bloque de código de clonación.
