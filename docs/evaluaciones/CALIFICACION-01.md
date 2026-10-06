@@ -42,7 +42,7 @@
 **Lo que puede mejorar:**
 - En `datos.py` usó `sorted()` para armar los escenarios B y C con tamaños grandes. Aunque no está en los algoritmos, la regla era no usar funciones de ordenamiento de Python; conviene construir esas listas sin ellas.
 - Los generadores cambian de forma de construir la lista según el tamaño (hasta 1001 o más) y el inverso usa una semilla fija escondida (123); eso hace el código confuso.
-- Faltan docstrings en las funciones internas del merge sort y en `medir`/`medir_insertion` no tienen el formato Google completo. Los archivos no terminan con una línea en blanco.
+- Faltan docstrings en las funciones internas del merge sort y en `medir`/`medir_insertion` no tienen el formato Google completo.
 
 ## 4. Calidad del análisis de las gráficas (12 / 20)
 **Lo que hizo bien:**
