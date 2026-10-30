@@ -1,86 +1,86 @@
 # Retroalimentación — Laboratorio 02: Dividir y vencer
 
-**Estudiante:** Roberto Echeverri · **Laboratorio:** Dividir y vencer (subarreglo máximo)
-**Fecha límite:** 2026-10-21 23:59 · **Versión revisada:** commit `b1f1029`
+**Estudiante:** Roberto Echeverri Arroyave · **Laboratorio:** Dividir y vencer (subarreglo máximo)
+**Fecha límite:** 2026-10-30 23:59 · **Versión revisada:** commit `8738269`
 
 ## Nota
 
 | Criterio | Puntos |
 |---|---|
-| Corrección conceptual | 8 / 20 |
-| Calidad de la explicación teórica | 11 / 20 |
-| Corrección de la implementación | 15 / 25 |
+| Corrección conceptual | 16 / 20 |
+| Calidad de la explicación teórica | 13 / 20 |
+| Corrección de la implementación | 22 / 25 |
 | Calidad del análisis de las gráficas | 9 / 25 |
-| Documentación y organización del informe | 3 / 10 |
-| **Total** | **46 / 100** |
-| **Nota (0–5)** | **2.30** |
+| Documentación y organización del informe | 2 / 10 |
+| **Total** | **62 / 100** |
+| **Nota (0–5)** | **3.10** |
 
-## 1. Corrección conceptual (8 / 20)
+**Incumplimientos de convención:** No siguió la estructura de carpetas acordada. El trabajo vigente está en `laboratorios/Corrección lab-2-divide-y- vencer/`, una carpeta con un nombre distinto al pedido (`lab2-divide-y-vencer/`). Además, la carpeta correcta `laboratorios/lab2-divide-y-vencer/` sigue en el repositorio con una versión anterior y distinta del trabajo (con `Pruebas.py` en mayúscula), así que el laboratorio quedó duplicado. Se evaluó el contenido de la carpeta "Corrección".
+
+## 1. Corrección conceptual (16 / 20)
 **Lo que hizo bien:**
-- Explica que dividir el problema del máximo de un arreglo no mejora nada, mientras que aquí sí mejora.
-- Entiende que la fuerza bruta se vuelve inviable con muchos datos.
+- Compara con el máximo de un arreglo: explica que combinar cuesta solo `Θ(1)`, que la recurrencia es `T(n) = 2T(n/2) + Θ(1)` y que da `Θ(n)`, frente al `Θ(n)` de combinar en el subarreglo máximo. Es una justificación correcta.
+- Recomienda divide y vencerás para la cooperativa y estima el tiempo con un millón de registros (cerca de 3,17 s contra unas 7,47 horas), declarando que es una estimación y no una regla de tres lineal.
+- En tamaños pequeños explica bien por qué divide y vencerás pierde ventaja (llamadas recursivas y combinación).
 
 **Lo que puede mejorar (y cómo corregirlo):**
-- Las preguntas del informe no son las cinco que pedía el laboratorio. No responde cuál es el tamaño desde el cual divide y vencerás gana, apoyado en sus datos.
-  → *Cómo corregirlo:* copie las cinco preguntas del enunciado como títulos del informe y conteste cada una debajo. Para el tamaño de cruce, mire en su tabla de tiempos desde qué `n` la columna de divide y vencerás pasa a ser la menor y se mantiene así.
-- La comparación con hallar el máximo de un arreglo es de una sola frase: falta el costo de combinar y la recurrencia de ese problema.
-  → *Cómo corregirlo:* escriba la recurrencia de ese problema (cuántos subproblemas, de qué tamaño, cuánto cuesta combinar las dos mitades) y compare el costo de combinar con el del subarreglo máximo.
-- Falta la recomendación para la cooperativa con una estimación para 1.000.000 de registros, declarada como estimación. Estimó para 100.000, pero sin recomendar.
-  → *Cómo corregirlo:* parta de un tiempo medido, multiplíquelo por el factor que predice cada `Θ` al pasar a 1.000.000, diga que es una estimación y cierre con cuál algoritmo recomienda y por qué.
+- No dice a partir de qué tamaño divide y vencerás empieza a ganar; afirma que sus mediciones no permiten establecerlo, pero su propia gráfica y tabla sí cubren tamaños pequeños.
+  → *Cómo corregirlo:* mire en sus datos los tamaños pequeños (por ejemplo, con una tabla de valores medidos) y señale entre cuáles dos tamaños cambia cuál algoritmo es más rápido.
 
-## 2. Calidad de la explicación teórica (11 / 20)
+## 2. Calidad de la explicación teórica (13 / 20)
 **Lo que hizo bien:**
-- Plantea bien `T(n) = 2T(n/2) + Θ(n)` y explica de dónde sale cada término (2 subproblemas, tamaño n/2, costo del caso cruzado).
-- Llega al resultado correcto `Θ(n log n)`.
+- Plantea la recurrencia `T(n) = 2T(n/2) + Θ(n)` y explica de dónde sale cada parte: dos subproblemas, tamaño `n/2` y costo lineal de la parte cruzada.
+- Indica que el resultado es `Θ(n log n)` y que la fuerza bruta es `Θ(n²)` porque revisa todas las parejas de inicio y fin.
 
 **Lo que puede mejorar (y cómo corregirlo):**
-- Nombra el teorema maestro pero no muestra la condición del caso que aplica ni cómo se verifica.
-  → *Cómo corregirlo:* identifique `a`, `b` y `f(n)` de su recurrencia, calcule `n^(log_b a)`, compárelo con `f(n)` y diga explícitamente qué caso se cumple y por qué.
-- No explica por qué la fuerza bruta es `Θ(n²)` (cuántos pares de días se revisan).
-  → *Cómo corregirlo:* cuente cuántos pares (inicio, fin) revisan sus dos ciclos y exprese esa cantidad como una suma; de ahí sale el orden de crecimiento.
+- Dice "al resolverla se obtiene `Θ(n log n)`" sin mostrar el método maestro: no identifica los valores de `a`, `b` y `f(n)` ni comprueba la condición del caso que aplica.
+  → *Cómo corregirlo:* escriba qué valen `a`, `b` y `f(n)`, compare `f(n)` con `n^(log_b a)` y diga qué caso del método maestro se cumple y por qué.
+- La explicación del `Θ(n²)` de la fuerza bruta es muy breve.
+  → *Cómo corregirlo:* cuente cuántas parejas (inicio, fin) se revisan en total y cuánto cuesta cada una cuando la suma se va acumulando.
 
-## 3. Corrección de la implementación (15 / 25)
+## 3. Corrección de la implementación (22 / 25)
 **Lo que hizo bien:**
-- Las tres funciones dan resultados correctos: la serie de ocho días da 17 y coinciden con la fuerza bruta en listas aleatorias que probé.
-- `subarreglo_maximo` resuelve los tres casos sin llamar a la fuerza bruta y no modifica la lista.
-- Hay pruebas con `assert` para la serie de ocho días, un elemento, todos negativos y todos positivos.
+- Las tres funciones dan la suma correcta en la serie de ocho días, un solo elemento, valores todos negativos, todos positivos y un caso que cruza el punto medio.
+- `subarreglo_maximo` resuelve los tres casos y no usa la fuerza bruta. Ninguna función modifica la lista recibida.
+- `pruebas.py` incluye veinte listas aleatorias con semilla fija, comparando ambos algoritmos.
+- Las funciones de `subarreglo.py` y `pruebas.py` tienen *docstrings* con `Args` y `Returns` y *type hints*.
 
 **Lo que puede mejorar (y cómo corregirlo):**
-- Faltan las veinte listas aleatorias en las pruebas y un caso cruzado explícito.
-  → *Cómo corregirlo:* en `pruebas.py` haga un ciclo de 20 listas aleatorias que compare la suma de ambos algoritmos con `assert`, y agregue una lista pequeña escrita a mano en la que el mejor tramo cruce la mitad.
-- Los docstrings no siguen el formato pedido (con Args y Returns); las funciones de `medicion.py` no tienen indicaciones de tipo.
-  → *Cómo corregirlo:* a cada función agréguele un docstring con las secciones `Args:` y `Returns:`, y escriba los tipos en la firma (por ejemplo `lista: list[int]` y `-> int`).
+- En `subarreglo.py` hay solo una línea en blanco antes de la primera función, en vez de dos.
+  → *Cómo corregirlo:* deje dos líneas en blanco entre el *docstring* del módulo y la primera función.
+- En `medicion.py`, `medir_tiempo` no indica el tipo de `funcion` ni de `argumentos`.
+  → *Cómo corregirlo:* anote `funcion` con `Callable` (del módulo `typing`) y los argumentos con `*argumentos: object`.
 
 ## 4. Calidad del análisis de las gráficas (9 / 25)
 **Lo que hizo bien:**
-- La gráfica tiene título, ejes rotulados, leyenda y ambas curvas en los mismos ejes, con siete tamaños.
-- Usó la misma lista para ambos algoritmos.
+- La gráfica `tiempo_vs_n.png` existe y es clara: ambas curvas en los mismos ejes, título, ejes rotulados y leyenda, con diez tamaños (de 10 a 5000).
+- `medicion.py` usa semilla fija, la misma lista para los dos algoritmos, `time.perf_counter()` solo sobre el algoritmo y comprueba que las sumas coinciden.
 
 **Lo que puede mejorar (y cómo corregirlo):**
-- No calculó cuánto se multiplica el tiempo al duplicar n ni lo contrastó con `Θ(n²)` y `Θ(n log n)`.
-  → *Cómo corregirlo:* para cada par de tamaños donde `n` se duplica, divida `t(2n)` entre `t(n)`, ponga los cocientes en una tabla y compárelos con lo que predice cada orden de crecimiento.
-- Dice que en n = 1600 divide y vencerás es unas 90 veces más rápido, pero en la gráfica publicada se lee cerca de 0.054 s contra 0.0026 s, unas 20 veces.
-  → *Cómo corregirlo:* calcule la razón directamente de los números de su tabla o gráfica final y escriba solo esa cifra; revise que el texto se actualice cada vez que repita la medición.
-- Solo hay un tamaño menor de 100 (50) y el mayor es 1600; se pedían dos menores de 100 y uno de 4000 o más.
-  → *Cómo corregirlo:* agregue a la lista de tamaños uno más pequeño (por ejemplo, 10 o 25) y uno de 4000 o más. Si la fuerza bruta tarda demasiado, repita menos veces solo ese tamaño.
-- Cronometró con `time.time()` en vez de `time.perf_counter()`.
-  → *Cómo corregirlo:* cambie las llamadas a `time.perf_counter()`, que tiene mejor resolución para tiempos cortos.
-- No usó semilla fija (los datos cambian en cada corrida) ni valores enteros entre -100 y 100, y no verificó que ambas sumas coincidan dentro de la medición.
-  → *Cómo corregirlo:* fije la semilla con `random.seed(...)` al inicio, genere los datos con `random.randint(-100, 100)` y, en cada tamaño, compare con `assert` las sumas de ambos algoritmos.
+- La gráfica no aparece en el informe: en la sección de la gráfica solo hay el texto "Gráfica comparativa de tiempos", sin la imagen.
+  → *Cómo corregirlo:* incruste la imagen con `![Tiempo vs n](graficas/tiempo_vs_n.png)`.
+- El informe no calcula cuánto se multiplica el tiempo de cada algoritmo al duplicar `n`, ni lo compara con lo que predicen `Θ(n²)` y `Θ(n log n)`.
+  → *Cómo corregirlo:* elija dos tamaños consecutivos donde `n` se duplique, divida los tiempos de cada algoritmo y diga si el resultado se parece a lo esperado en cada caso.
+- Las afirmaciones sobre el desempeño son genéricas ("se espera que...", "debería ser más eficiente") y no citan valores leídos de la gráfica. La estimación a un millón sí usa un valor medido (0,672 s con 5000 elementos, coherente con la gráfica), pero el informe nunca describe qué hace cada curva al crecer `n`.
+  → *Cómo corregirlo:* describa con valores de su gráfica (o de una tabla) cómo cambia cada curva entre un tamaño pequeño, uno mediano y 5000.
+- El informe no menciona si repitió las mediciones.
+  → *Cómo corregirlo:* agregue una nota sobre cómo midió (una sola vez o varias, y qué valor graficó).
 
-## 5. Documentación y organización del informe (3 / 10)
+## 5. Documentación y organización del informe (2 / 10)
 **Lo que hizo bien:**
-- El informe trae su nombre, instrucciones para reproducir y el orden general de partes.
+- El informe trae su nombre completo y explica el objetivo y el contenido de la carpeta.
 
 **Lo que puede mejorar (y cómo corregirlo):**
-- No siguió la convención de nombres: el archivo de pruebas se llama `Pruebas.py` (el entregable pide `pruebas.py`); el informe manda ejecutar `pruebas.py`, que en GitHub o Linux no existe.
-  → *Cómo corregirlo:* renombre el archivo a `pruebas.py` con `git mv` (así Git registra el cambio de mayúsculas) y revise que las instrucciones del informe usen ese nombre.
-- La gráfica no se ve en el informe: está escrita como texto con otro nombre (`comparacion_subarreglo.png`) que no existe, y no usa la sintaxis de imagen.
-  → *Cómo corregirlo:* use la sintaxis de imagen de Markdown con la ruta real de su archivo, `graficas/tiempo_vs_n.png`, y compruebe en GitHub que se vea.
-- Los archivos de código se nombran pero no están enlazados.
-  → *Cómo corregirlo:* escriba cada nombre como enlace relativo, por ejemplo `[subarreglo.py](subarreglo.py)`.
-- Hay un solo commit ("Add files via upload") para el laboratorio; se pedían al menos tres, descriptivos.
-  → *Cómo corregirlo:* trabaje desde su computador con `git add`, `git commit` y `git push` y haga un commit por etapa (algoritmos, mediciones, informe) con un mensaje que diga qué cambió.
+- Carpeta con nombre distinto a la convención y laboratorio duplicado (ver arriba).
+  → *Cómo corregirlo:* deje una sola carpeta llamada `lab2-divide-y-vencer/` con los archivos del entregable (por ejemplo, con `git mv`) y elimine la copia anterior.
+- El informe no enlaza el código de cada parte: solo nombra los archivos entre comillas.
+  → *Cómo corregirlo:* al inicio de la Parte 1 enlace `subarreglo.py` y `pruebas.py`, y al inicio de la Parte 2 enlace `medicion.py`, con enlaces de Markdown como `[subarreglo.py](subarreglo.py)`.
+- No sigue el orden pedido (reproducción, Parte 1, Parte 2, Parte 3) ni numera las cinco preguntas; la parte de verificación no cubre cada caso probado.
+  → *Cómo corregirlo:* organice el informe con esos cuatro bloques y responda las cinco preguntas en el orden de la guía.
+- Las instrucciones de reproducción no explican cómo activar el entorno, y hay frases sueltas ("Desde la carpeta del proyecto, ejecuta las pruebas:" sin comando).
+  → *Cómo corregirlo:* indique cómo activar el entorno virtual e instalar `requirements.txt`, y ponga cada comando justo después de la frase que lo introduce.
+- El laboratorio tiene solo dos commits con mensaje "Add files via upload", que no describen el cambio; se piden al menos tres descriptivos.
+  → *Cómo corregirlo:* haga commits pequeños y frecuentes con mensajes que digan qué se hizo, por ejemplo "Agrega suma_cruzada y sus pruebas".
 
 ## ¿El código funciona?
-Sí. Las pruebas pasan, ambos algoritmos dan la misma suma y `medicion.py` corre y genera la gráfica. Lo que falla es el cumplimiento de los requisitos de la medición y del informe.
+Sí. Las pruebas pasan y ambos algoritmos dan la misma suma máxima en todos los casos. La medición corre sin errores y genera la gráfica en `graficas/`.
