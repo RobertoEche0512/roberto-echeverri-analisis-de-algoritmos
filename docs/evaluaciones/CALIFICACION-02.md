@@ -15,7 +15,7 @@
 | **Total** | **62 / 100** |
 | **Nota (0–5)** | **3.10** |
 
-**Incumplimientos de convención:** No siguió la estructura de carpetas acordada. El trabajo vigente está en `laboratorios/Corrección lab-2-divide-y- vencer/`, una carpeta con un nombre distinto al pedido (`lab2-divide-y-vencer/`). Además, la carpeta correcta `laboratorios/lab2-divide-y-vencer/` sigue en el repositorio con una versión anterior y distinta del trabajo (con `Pruebas.py` en mayúscula), así que el laboratorio quedó duplicado. Se evaluó el contenido de la carpeta "Corrección".
+**Incumplimientos de convención:** No siguió la estructura de carpetas acordada. El trabajo vigente está en `laboratorios/Corrección lab-2-divide-y- vencer/`, una carpeta con un nombre distinto al pedido (`lab2-divide-y-vencer/`). Además, la carpeta correcta `laboratorios/lab2-divide-y-vencer/` sigue en el repositorio con una versión anterior y distinta del trabajo (con `Pruebas.py` en mayúscula), así que el laboratorio quedó duplicado.
 
 ## 1. Corrección conceptual (16 / 20)
 **Lo que hizo bien:**
